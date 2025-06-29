@@ -1,0 +1,4 @@
+curl -X POST "https://your-supabase-url/functions/v1/send-daily-overview" \
+  -H "Authorization: Bearer YOUR_SERVICE_ROLE_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"user_email": "your-email@example.com", "send_immediately": true}'
