@@ -1,0 +1,16 @@
+name: Send Daily Overview Emails
+on:
+  schedule:
+    - cron: '0 9 * * *'  # 9 AM UTC daily
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  send-emails:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Daily Overview
+        run: |
+          curl -X POST "https://your-project.supabase.co/functions/v1/send-daily-overview" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"user_email": "your-email@example.com"}'
